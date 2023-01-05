@@ -1,0 +1,88 @@
+@import url("https://unpkg.com/@picocss/pico@latest/css/pico.min.css");
+
+:root {
+  --bubbleColor: #67af6d;
+  --sender-color: dodgerblue;
+  --receiver-color: #1eff29;
+  --white-color : white;
+
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  border: 1px solid gold;
+  border-radius: 5px;
+}
+
+.chat-box {
+  height: 500px;
+  width: 700px;
+  margin-bottom: 0;
+  padding: 1rem 1rem;
+  overflow-y: auto;
+}
+
+.chat-box li {
+  list-style: none;
+  padding: 0 2rem;
+  display: flex;
+  margin: 0.5rem;
+}
+
+.form {
+  display: flex;
+  margin: 0;
+}
+
+.form input {
+  flex: 4;
+  margin: 0;
+}
+
+.form button {
+  flex: 1;
+  margin: 0;
+}
+
+.sender {
+  background-color: var(--sender-color);
+}
+
+.receiver {
+  background-color: var(--receiver-color);
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bubbleColor);
+  color:var(--white-color);
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+}
+
+.chat {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+}
+
+.options button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  font-size: 25px;
+}
