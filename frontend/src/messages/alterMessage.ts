@@ -8,11 +8,12 @@ export function alterMessage(
   socket: Socket
 ) {
   const messageContainer = document.querySelector<HTMLDivElement>(
-    `#${message.id}`
+    `#${message.uuid}`
   )!;
   messageContainer.textContent = message.content;
   if (emitType === "update-message") {
-    messageContainer.innerHTML += generateHtmlOptions();
+  
+    socket.id === message.id && (messageContainer.innerHTML += generateHtmlOptions());
     const updateButtons =
       document.querySelectorAll<HTMLButtonElement>(".update-btn");
     const deleteButtons =
@@ -29,12 +30,12 @@ export function emitMessageAlteration(
 ) {
   buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      const id = (<HTMLButtonElement>event.target).closest(".bubble")?.id;
+      const uuid = (<HTMLButtonElement>event.target).closest(".bubble")?.id;
       if (emitType === "delete-message") {
-        socket.emit(emitType, id);
+        socket.emit(emitType, {uuid, id: socket.id});
       } else {
         const content = prompt("Modifier le message");
-        content?.trim() && socket.emit(emitType, { id, content });
+        content?.trim() && socket.emit(emitType, { id : socket.id ,uuid, content });
       }
     });
   });
